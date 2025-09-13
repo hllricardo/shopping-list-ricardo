@@ -9,6 +9,11 @@ function addItem(item, quantity){
 }
 
 // funcion para eliminar un objeto de la lista mediante su posicion
-function removeItem(id){
-    shoppingList.splice(id);
+function removeItem(index){
+    shoppingList.splice(index);
+}
+
+// funcion para modificar los objetos dentro del array
+function updateItem(index, newItem, newQuantity){
+
 }
