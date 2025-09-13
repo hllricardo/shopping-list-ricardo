@@ -25,19 +25,22 @@ function removeItem(index){
 // funcion para modificar los objetos dentro del array
 function updateItem(index, newItem, newQuantity){
     for (i = 0; i < shoppingList.length; i++){
-        if (item == shoppingList[i].item) {
+        if (newItem == shoppingList[index].item) {
             return;
         }
     }
+    
 
-    if (quantity > 0) {
+    if (newQuantity > 0) {
         shoppingList[index].item = newItem;
         shoppingList[index].cantidad = newQuantity;
     }
 }
-addItem("zanahoria", 12);
-removeItem(1);
 
+// zona de pruebas de las funciones
+addItem("zanahoria", 12);
+updateItem(1, "sandia", 1);
+// --------------------------------
 
 
 console.table(shoppingList);
