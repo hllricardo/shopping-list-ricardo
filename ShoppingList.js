@@ -51,7 +51,7 @@ function interface(){
             case "1":
                 item = prompt("Introduce el producto que vas a añadir");
                 quantity = prompt("Introduce la cantidad");
-                parseInt(quantity, 10);
+                quantity = parseInt(quantity);
                 addItem(item,quantity);
                 break;
             case "2":
@@ -63,7 +63,7 @@ function interface(){
                 index = prompt("Introduce el index del producto a modificar");
                 item = prompt("Introduce el nuevo producto");
                 quantity = prompt("Introduce la cantidad");
-                parseInt(quantity, 10);
+                quantity = parseInt(quantity);
                 updateItem(index, item, quantity);
                 break;
             case "4":
@@ -78,7 +78,9 @@ function interface(){
     }
 }
 
-
+// limpia la consola, muestra la tabla y ejecuta la interfaz
+console.clear();
+console.table(shoppingList);
 interface();
 
 
