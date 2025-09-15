@@ -5,15 +5,15 @@ const shoppingList = [
 ];
 
 // funcion para añadir objetos al array creado
-function addItem(item, quantity){
+function addItem(newItem, newQuantity){
     for (i = 0; i < shoppingList.length; i++){
-        if (item == shoppingList[i].item) {
+        if (newItem == shoppingList[i].item) {
             return;
         }
     }
 
-    if (quantity > 0) {
-        shoppingList.push({item: item, cantidad: quantity, comprado: false});
+    if (newQuantity > 0) {
+        shoppingList.push({item: newItem, cantidad: newQuantity, comprado: false});
     }
 }
 
@@ -37,10 +37,49 @@ function updateItem(index, newItem, newQuantity){
     }
 }
 
-// zona de pruebas de las funciones
-addItem("zanahoria", 12);
-updateItem(1, "sandia", 1);
-// --------------------------------
+// funcion a modo de "interfaz" para moverse por la aplicacion y llamar diferenctes funciones para realizar operaciones
+function interface(){
+    const bucle = true;
+    while(bucle){
+        let opcion = prompt("¿Que quieres hacer? Añadir = 1, Eliminar = 2, Modificar = 3, Salir = 4");
+
+        let item = undefined;
+        let quantity = undefined;
+        let index = undefined;
+
+        switch (opcion){
+            case "1":
+                item = prompt("Introduce el producto que vas a añadir");
+                quantity = prompt("Introduce la cantidad");
+                parseInt(quantity, 10);
+                addItem(item,quantity);
+                break;
+            case "2":
+                index = prompt("Introduce el index del producto a eliminar");
+                parseInt(index);
+                removeItem(index);
+                break;
+            case "3":
+                index = prompt("Introduce el index del producto a modificar");
+                item = prompt("Introduce el nuevo producto");
+                quantity = prompt("Introduce la cantidad");
+                parseInt(quantity, 10);
+                updateItem(index, item, quantity);
+                break;
+            case "4":
+                alert("Saliendo de la aplicacion");
+                bucle = false;
+                break;
+            default:
+                alert("No se ha introducido una opcion valida");
+        }
+        console.clear();
+        console.table(shoppingList);
+    }
+}
 
 
-console.table(shoppingList);
+interface();
+
+
+
